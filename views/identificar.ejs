@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+
+    <title>Autenticación FireBase</title>
+</head>
+<body>
+    
+<form action="/logear" method="post">
+<label for="correo">EMAIL</label>
+<input type="text" name="email">
+
+<label for="clave"></label>
+<input type="text" name="password">
+
+<input type="submit">
+
+</form>
+<script>
+    // Initialize Firebase
+   
+    firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+    // Firebase UI configuration
+    var uiConfig = {
+      signInSuccessUrl: '/dashboard',
+      signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+       
+        
+      ],
+      tosUrl: '/terms',
+      privacyPolicyUrl: '/privacy',
+      credentialHelper: firebaseui.auth.CredentialHelper.NONE
+    };
+  
+    // Initialize the Firebase UI
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    
+    // Start the Firebase UI login
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
+  <div id="firebaseui-auth-container"></div>
+</body>
+</html>

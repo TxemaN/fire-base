@@ -23,13 +23,11 @@
 <input type="submit">
 
 </form>
+
+
 <script>
-    // Initialize Firebase
-   
-    firebase.initializeApp(firebaseConfig);
-</script>
-<script>
-    // Firebase UI configuration
+    const {firebaseConfig}= import( '../helpers/firebaseHelper.js' )
+    firebase.initializeApp(firebaseConfig)
     var uiConfig = {
       signInSuccessUrl: '/dashboard',
       signInOptions: [

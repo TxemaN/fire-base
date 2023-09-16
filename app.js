@@ -14,6 +14,12 @@ require('dotenv').config();
 //SERVIDOR
 
 const app = express();
+
+//VIEWER
+app.locals.firebaseConfiguracion = ()=>{
+    return firebase.initializeApp(firebaseConfig)
+}
+app.set("view engine, ejs")
 //PARSER
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
